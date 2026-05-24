@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Capture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #camera {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Set explicit width and height for mobile-like view */
+            width: 240px;
+            height: 280px;
+            margin-bottom: 20px;
+            object-fit: cover; /* Ensures the aspect ratio is maintained */
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Camera Capture</h1>
+    <video id="camera" autoplay playsinline></video>
+    <button id="capture">Capture Image</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="result"></div>
+
+    <script>
+        const video = document.getElementById('camera');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+        const resultDiv = document.getElementById('result');
+
+        // Set custom width and height for the video element (portrait mode)
+        const videoWidth = 300;  // Smaller width for portrait view
+        const videoHeight = 400; // Taller height for portrait view
+
+        // Access the user's camera with the custom resolution
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                width: { ideal: videoWidth },  // Ideal width for the video
+                height: { ideal: videoHeight }, // Ideal height for the video
+                facingMode: "user" // Front camera (on mobile devices)
+            }
+        })
+        .then(stream => {
+            video.srcObject = stream;
+
+            // Force the video element to have a specific size
+            video.style.width = `${videoWidth}px`;
+            video.style.height = `${videoHeight}px`;
+        })
+        .catch(error => {
+            console.error('Error accessing the camera', error);
+            resultDiv.innerHTML = `<p style="color: red;">Error accessing the camera. Please ensure that your camera is connected and permissions are granted.</p>`;
+        });
+
+      // Capture the image when the button is clicked
+    captureButton.addEventListener('click', () => {
+        // Ensure the canvas matches the video resolution
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Convert the canvas to a blob and upload the image
+        canvas.toBlob(blob => {
+            const formData = new FormData();
+            formData.append('file', blob, 'capture.jpg');
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                resultDiv.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error uploading the image', error);
+                resultDiv.innerHTML = `<p style="color: red;">Error uploading the image. Please try again.</p>`;
+            });
+        });
+
+        });
+    </script>
+
+</body>
+</html>
