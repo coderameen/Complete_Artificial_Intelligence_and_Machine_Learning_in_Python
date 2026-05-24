@@ -1,0 +1,5 @@
+Find Complete Notebook code, Pre-trained Model(saved model), Dataset liks
+
+1. Dataset: https://www.kaggle.com/datasets/bhaveshmittal/melanoma-cancer-dataset
+2. Notebook: https://www.kaggle.com/code/ameenhasan/skin-cancer-implementation-code
+3. Saved Model: https://www.kaggle.com/datasets/ameenhasan/skin-prediction-pretrain-model
