@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Emotion Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    body {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    color: #333;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    background-color: #4a90e2;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.result-box:hover {
+    transform: scale(1.02);
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border: 5px solid #4a90e2;
+    border-radius: 12px;
+}
+
+.emotion-label {
+    font-size: 1.8rem;
+    color: #4a4a4a;
+    margin: 10px 0;
+}
+
+.highlight {
+    color: #e94e77;
+    font-weight: bold;
+}
+
+.confidence-score {
+    font-size: 1.2rem;
+    color: #555;
+    background: #dff9fb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+</style>
+<body>
+    <div class="container text-center my-5">
+        <h1 class="app-title">Facial Emotion Detection App 😃</h1>
+        <form action="/" method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="file" class="form-control mb-3" required>
+            <button type="submit" class="btn btn-primary w-100">Upload & Detect Emotion</button>
+        </form>
+
+        {% if image_path %}
+        <div class="result-box mt-4">
+            <h2>Prediction Result</h2>
+            <img src="{{ image_path }}" alt="Uploaded Image" class="img-fluid rounded">
+            <h3 class="emotion-label">Emotion: <span class="highlight">{{ emotion }}</span></h3>
+            <p class="confidence-score">Confidence: {{ confidence }}%</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
