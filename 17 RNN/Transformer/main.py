@@ -1,16 +1,18 @@
 # pip install flask transformers torch sentencepiece
 
 from flask import Flask, request, jsonify, render_template
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import T5ForConditionalGeneration, AutoTokenizer
+import torch
 import re
 
 app = Flask(__name__)
 
 # Load the saved model and tokenizer
 model = T5ForConditionalGeneration.from_pretrained("./chatbot_model")
-tokenizer = T5Tokenizer.from_pretrained("./chatbot_model")
+tokenizer = AutoTokenizer.from_pretrained("./chatbot_model")
 
-device = model.device
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model.to(device)
 
 
 
