@@ -1,0 +1,7 @@
+curl --location 'http://localhost:11434/api/generate' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "llama3.2:1b",
+    "prompt": "What is Python in a single line?",
+    "stream": false
+}'
