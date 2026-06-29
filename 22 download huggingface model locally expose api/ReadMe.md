@@ -9,7 +9,9 @@ URL: https://huggingface.co/Qwen/Qwen3.5-0.8B
 
 
 >>python -m venv qwen-env
+
 >>source qwen-env/bin/activate 
+
 >>pip install torch transformers accelerate fastapi uvicorn
 
 >>pip install bitsandbytes
@@ -23,8 +25,11 @@ RUN:
 
 #=========STEP 3 (Expose API)=============
 >>pip uninstall -y tokenizers transformers
+
 >>pip install transformers git+https://github.com/huggingface/transformers.git
+
 >> pip install tokenizers==0.22.1
+
 >>pip install accelerate safetensors
 
 RUN:
