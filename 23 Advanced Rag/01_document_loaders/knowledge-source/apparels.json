@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "productID": "0000001",
+      "manufacturer": "Zara",
+      "img": "https://static.zara.net/photos///2023/I/0/2/p/5320/355/800/2/w/563/5320355800_1_1_1.jpg?ts=1697787915583",
+      "Url": "https://www.zara.com/in/en/man-outerwear-l715.html",
+      "productName": "PINSTRIPE COAT",
+      "Description": "Oversize-fit coat made of a viscose blend fabric. Notch lapel collar and long sleeves with buttoned cuffs.",
+      "price": 4900,
+      "category": "Men Cloths"
+    },
+    {
+      "productID": "0000002",
+      "manufacturer": "Zara",
+      "img": "https://static.zara.net/photos///2023/I/0/2/p/7380/687/711/2/w/563/7380687711_1_1_1.jpg?ts=1694174968069",
+      "Url": "https://www.zara.com/in/en/oversized-technical-trench-coat-p07380687.html",
+      "productName": "OVERSIZED TECHNICAL TRENCH COAT",
+      "Description": "Trench coat made of technical fabric with a velvety finish. Notch lapel collar and long sleeves.",
+      "price": 4900,
+      "category": "Men Cloths"
+    },
+    {
+      "productID": "0000003",
+      "manufacturer": "Zara",
+      "img": "https://static.zara.net/photos///2023/I/0/2/p/3918/611/508/2/w/563/3918611508_1_1_1.jpg?ts=1696405613738",
+      "Url": "https://www.zara.com/in/en/padded-technical-parka-p03918611.html",
+      "productName": "PADDED TECHNICAL PARKA",
+      "Description": "Parka made of technical fabric, padded on inside. High neck with a hood and long sleeves with elasticated cuffs.",
+      "price": 5900,
+      "category": "Perfumes"
+    },
+    {
+      "productID": "0000004",
+      "manufacturer": "Zara",
+      "img": "https://static.zara.net/photos///2022/I/2/2/p/0210/585/999/2/w/563/0210585999_6_1_1.jpg?ts=1663836779877",
+      "Url": "https://www.zara.com/in/en/bogoss-vibrant-leather-100-ml---3-38%C2%A0oz-p20210585.html",
+      "productName": "BOGOSS VIBRANT LEATHER 100 ML / 3.38 OZ",
+      "Description": "The first Vibrant Leather for le benjamin with its fruity hint of pineapple that gives it modernity, accompanied by cedar notes, adding a woody touch of rejuvenation.",
+      "price": 1900,
+      "category": "Perfumes"
+    },
+    {
+      "productID": "0000005",
+      "manufacturer": "Zara",
+      "img": "https://static.zara.net/photos///2023/I/1/2/p/3213/220/203/2/w/563/3213220203_2_1_1.jpg?ts=1687421823150",
+      "Url": "https://www.zara.com/in/en/multicoloured-nylon-backpack-p13213220.html",
+      "productName": "MULTICOLOURED NYLON BACKPACK",
+      "Description": "Multicoloured backpack. Soft construction. Featuring one main zip pocket and a medium-sized zip pocket on the inside.",
+      "price": 2490,
+      "category": "Bags"
+    }
+  ]
+}
